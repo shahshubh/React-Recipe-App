@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+
 import './Recipe.css'
 
 class Recipe extends Component{
@@ -26,6 +28,12 @@ class Recipe extends Component{
             </div>
         );
     }
+}
+Recipe.propTypes = {
+    title: PropTypes.string.isRequired,
+    ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
+    instructions: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired
 }
 
 export default Recipe;
