@@ -8,6 +8,7 @@ import './RecipeApp.css';
 function RecipeApp() {
   return (
     <div className="App">
+      <Navbar />
       <RecipeList />
     </div>  
   );
