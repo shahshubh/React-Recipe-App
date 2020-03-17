@@ -1,0 +1,61 @@
+.recipe-form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.recipe-form{ 
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 20px;
+    border: 4px solid #2c3e50;
+    border-radius: 10px;
+
+}
+
+.close-button{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    font-size: 0.9em;
+    color: #777;
+    text-shadow: 0 1px 0 #fff;
+    align-self: flex-end;
+}
+
+.buttons{
+    width: 50px;
+    padding: 5px;
+    align-self: flex-end;
+    margin: 10px;
+    background: #2c3e50;
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.plus-button{
+    padding: 5px;
+    width: 30px;
+    align-self: flex-end;
+    margin: 10px;
+    background: #2c3e50;
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+label{
+    font-weight: bold;
+}
+
+input{
+    margin: 10px;
+    height: 20px;
+}
