@@ -10,6 +10,7 @@ function RecipeApp() {
     <div className="App">
       <Navbar />
       <RecipeList />
+      <RecipeList />
     </div>  
   );
 }
