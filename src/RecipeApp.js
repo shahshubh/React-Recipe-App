@@ -12,21 +12,21 @@ class RecipeApp extends Component {
     this.state = {
       recipes: [
         {
-          id: 1,
+          id: 0,
           title: 'pizza',
           instructions: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
           ingredients: ['bread','cheese','chilli','toppings'],
           image: 'pizza.jpeg'
         },
         {
-          id: 2,
+          id: 1,
           title: 'noodles',
           instructions: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
           ingredients: ['noodles','soya sauce','chilli sauce'],
           image: 'noodles.jpeg'
         },
         {
-          id: 3,
+          id: 2,
           title: 'sandwich',
           instructions: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
           ingredients: ['breads','tomato','cheese','capsicum'],
@@ -35,13 +35,24 @@ class RecipeApp extends Component {
       ],
       nextRecipeId: 3,
     }
-
+    this.handleSave = this.handleSave.bind(this);
   }
+
+  handleSave(recipe){
+    this.setState((prevState,props) => {
+      const newRecipe = {...recipe, id: this.state.nextRecipeId};
+      return {
+        nextRecipeId: prevState.nextRecipeId + 1,
+        recipes: [...this.state.recipes, newRecipe]
+      }
+    });
+  }
+
   render(){
     return (
       <div className="App">
         <Navbar />
-        <RecipeInput />
+        <RecipeInput onSave={this.handleSave} />
         <RecipeList recipes={this.state.recipes} />
       </div>  
     );

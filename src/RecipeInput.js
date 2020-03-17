@@ -4,19 +4,21 @@ import './RecipeInput.css';
 
 class RecipeInput extends Component{    
     static defaultProps = {
-        onClose(){}
+        onClose(){},
+        onSave(){}
     }
     constructor(props){
         super(props);
         this.state = {
             title: '',
-            instructions: "",
-            ingredients: [""],
+            instructions: '',
+            ingredients: [''],
             image: '' 
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleChangeIng = this.handleChangeIng.bind(this);
         this.handleNewIngredient = this.handleNewIngredient.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     //handlechange will get browser event as a parameter so we pass e as a parameter
@@ -35,6 +37,17 @@ class RecipeInput extends Component{
             i === index ? e.target.value : ing
         ));
         this.setState({ingredients});
+    }
+
+    handleSubmit(e){
+        e.preventDefault();
+        this.props.onSave({...this.state});
+        this.setState({
+            title: '',
+            instructions: '',
+            ingredients: [''],
+            image: '' 
+        }); 
     }
 
     render(){
