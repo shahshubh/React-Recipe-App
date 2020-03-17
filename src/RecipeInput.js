@@ -15,11 +15,26 @@ class RecipeInput extends Component{
             image: '' 
         };
         this.handleChange = this.handleChange.bind(this);
+        this.handleChangeIng = this.handleChangeIng.bind(this);
+        this.handleNewIngredient = this.handleNewIngredient.bind(this);
     }
 
     //handlechange will get browser event as a parameter so we pass e as a parameter
     handleChange(e){
         this.setState({[e.target.name]: e.target.value});
+    }
+
+    handleNewIngredient(e){
+        const {ingredients} = this.state;
+        this.setState({ingredients: [...ingredients, '']});
+    }
+
+    handleChangeIng(e){
+        const index = Number(e.target.name.split('-')[1]);
+        const ingredients = this.state.ingredients.map((ing,i) => (
+            i === index ? e.target.value : ing
+        ));
+        this.setState({ingredients});
     }
 
     render(){
@@ -30,7 +45,7 @@ class RecipeInput extends Component{
                 className="recipe-form-line"
                 key={`ingredient-${i}`}
             >
-                <label>
+                <label> {i+1}.
                     <input
                         className="recipe-ingredient-input"
                         type="text"
@@ -39,7 +54,7 @@ class RecipeInput extends Component{
                         size={45}
                         autoComplete="off"
                         placeholder="Ingredient"
-                        onChange={() => {}} />
+                        onChange={this.handleChangeIng} />
                 </label>
             </div>
         ));
@@ -83,8 +98,7 @@ class RecipeInput extends Component{
                     <button 
                         type="button"
                         onClick={this.handleNewIngredient}
-                        className="buttons"
-                        className="plus-button"
+                        className="buttons plus-button"
                     > + </button>
 
                     <div className="recipe-form-line">
